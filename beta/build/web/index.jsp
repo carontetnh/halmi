@@ -33,6 +33,8 @@
               <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
                 <li><a href="login.jsp">Login</a></li>
+                <li><a href="productos.jsp">Productos</a></li>
+                <li><a href="about.jsp">Contacto</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li>
