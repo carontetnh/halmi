@@ -6,6 +6,7 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/bootstrap-theme.min.css" rel="stylesheet">
         <link href="css/custom.css" rel="stylesheet">
+        <link href="toastr/toastr.css" rel="stylesheet" type="text/css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Inicio</title>
     </head>
@@ -129,21 +130,21 @@
             User halmiUser = new User();
             halmiUser.setNombre(us);
             halmiUser.GetUser();
-            
-            out.print("Welcome ");
-            out.print(halmiUser.getNombre());
-            out.print("!!!");
+            out.print("<input type=\"hidden\" id=\"Nombre\" value=\""+halmiUser.getNombre()+"\">");
         %>
-        <br><br>
-        <a href="logout.jsp">Log Out</a>
-        <br><br>
-          
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/toastr.js"></script>
         <footer class="footer">
             <div class="container-footer">
               <p class="text-muted">Place sticky footer content here.</p>
             </div>
           </footer>
+        <script type="text/javascript">
+            $( document ).ready(function() {
+                toastr.success('Welcome ' + $('#Nombre').val());
+            });
+        </script>
     </body>
 </html>
