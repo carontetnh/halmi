@@ -6,6 +6,7 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/bootstrap-theme.min.css" rel="stylesheet">
         <link href="css/custom.css" rel="stylesheet">
+        <link href="toastr/toastr.css" rel="stylesheet" type="text/css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login</title>
     </head>
@@ -50,7 +51,6 @@
             <div class="row">
                 <div class="col-md-4 center-block"></div>
                 <div class="col-md-4 center-block">
-                    <form action="LoginController" method="post">
                     <input type="text" name="Nombre" id="Nombre" class="form-control" placeholder="Nombre" required autofocus value="<jsp:getProperty name="user" property="nombre"/>">
                     <br>
                     <input type="password" id="Password" class="form-control" placeholder="Password" required name="Password" value="<jsp:getProperty name="user" property="password"/>">
@@ -60,16 +60,37 @@
                             <a class="btn btn-lg btn-primary btn-block" href="registry.jsp">Registrate</a>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button> 
+                            <button class="btn btn-lg btn-primary btn-block" type="submit" id="login">Entrar</button> 
                         </div>
                     </div>
-                    </form>
                 </div>
                 <div class="col-md-4 center-block"></div>
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>          
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/toastr.js"></script>
+        <script>
+            $(document).ready(function(){
+               $('#login').click(function()
+               {   
+                  var user=$('#Nombre').val();
+                  var pwd=$('#Password').val();
+                  $.ajax({
+                       type: "POST",
+                       url:"LoginController",
+                       data:{"Nombre":user,"Password":pwd},
+                       success: function (data) {
+                          if(data=='True'){
+                            $(location).attr('href','welcome.jsp');
+                          }else{
+                              toastr.error('Either username or password is incorrect!');
+                          }
+                       }
+                     });                                
+                   });
+                 });
+           </script>
         <footer class="footer">
             <div class="container-footer">
               <p class="text-muted">Place sticky footer content here.</p>

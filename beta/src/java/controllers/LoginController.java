@@ -33,14 +33,12 @@ public class LoginController extends HttpServlet
                     HttpSession sessionUser = request.getSession();
                     sessionUser.setAttribute("Nombre",us.getNombre());
 
-                    RequestDispatcher rd1 = request.getRequestDispatcher("welcome.jsp");
-                    rd1.forward(request,response);
+                    response.setContentType("text/html;charset=UTF-8");
+                    response.getWriter().write("True");
+                }else{
+                    response.setContentType("text/html;charset=UTF-8");
+                    response.getWriter().write("False");
                 }  
-                else
-                {
-                    out.println("Either username or password is incorrect!");
-                    out.println("<a href=\"login.jsp\">Try again...</a>");
-                }    
             } finally {out.close();}
         }
         
