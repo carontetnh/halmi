@@ -3,11 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ricar/Documents/halmi/trunk/beta/src/java/controllers/LoginController.java</file>
-            <file>file:/C:/Users/ricar/Documents/halmi/trunk/beta/web/logout.jsp</file>
-            <file>file:/C:/Users/ricar/Documents/halmi/trunk/beta/web/login.jsp</file>
-            <file>file:/C:/Users/ricar/Documents/halmi/trunk/beta/web/welcome.jsp</file>
-            <file>file:/C:/Users/ricar/Documents/halmi/trunk/beta/web/index.jsp</file>
+            <file>file:/C:/Users/ricardo.salinas/Documents/Beta/halmi/trunk/beta/src/java/controllers/RegisterController.java</file>
+            <file>file:/C:/Users/ricardo.salinas/Documents/Beta/halmi/trunk/beta/src/java/controllers/LoginController.java</file>
         </group>
     </open-files>
 </project-private>
