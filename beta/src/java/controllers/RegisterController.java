@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.RequestDispatcher;
 import beans.User;
+import Utilities.UserUtility;
 import javax.servlet.http.HttpSession;
 
 public class RegisterController extends HttpServlet 
@@ -26,7 +27,7 @@ public class RegisterController extends HttpServlet
                 user.setPassword(request.getParameter("Password"));
                 user.setTelefono(request.getParameter("Telefono"));
 
-                user.RegisterUser();
+                UserUtility.RegisterUser(user);
 
                 out.println("<br>");
                 out.println("<br>");

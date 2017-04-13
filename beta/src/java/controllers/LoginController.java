@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.RequestDispatcher;
 import beans.User;
+import Utilities.UserUtility;
 import javax.servlet.http.HttpSession;
 
 public class LoginController extends HttpServlet 
@@ -24,11 +25,11 @@ public class LoginController extends HttpServlet
                 user.setNombre(request.getParameter("Nombre"));
                 user.setPassword(request.getParameter("Password"));
 
-                if(User.LoginUser(request.getParameter("Nombre"),request.getParameter("Password")))
+                if(UserUtility.LoginUser(request.getParameter("Nombre"),request.getParameter("Password")))
                 {
                     User us = new User();
                     us.setNombre(String.valueOf(request.getParameter("Nombre")));
-                    us.GetUser();
+                    us = UserUtility.GetUser(us.getNombre());
 
                     HttpSession sessionUser = request.getSession();
                     sessionUser.setAttribute("Nombre",us.getNombre());

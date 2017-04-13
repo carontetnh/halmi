@@ -16,21 +16,7 @@ public class User
     private String Nombre,Correo,Telefono,Password,Empresa,Apellido,Direccion,Pais,Ciudad,Zip,Estado,Genero,Nacimiento;
     public User()
     {
-        Nombre="";
-        Correo="";
-        Password="";
-        Telefono="";
-        Empresa="";
-        Apellido="";
-        Direccion="";
-        Pais="";
-        Ciudad="";
-        Zip="";
-        Estado="";
-        Genero="";
-        Nacimiento = "";
-//        FechaAgregado="";
-//        FechaActualizado="";
+        
     }        
  
     //----------------------------------//
@@ -174,79 +160,4 @@ public class User
 //        this.FechaActualizado= dateFormat.format(date);
 //    }
     //----------------------------------//
-      
-    public void RegisterUser()
-    {
-        try
-        {    
-            DbConnection dbconn=new DbConnection();
-            Connection myconnection= dbconn.Connection();
-            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-            Date date = new Date();
-            String sqlString="INSERT INTO usuarios (Nombre,Correo,Password,Telefono,FechaAgregado,FechaActualizado) VALUES ('"+Nombre+"','"+Correo+"','"+Password+"','"+Telefono+"','"+dateFormat.format(date)+"','"+dateFormat.format(date)+"')";
-            
-            Statement myStatement = myconnection.createStatement();
-            
-            try
-            {    
-                myStatement.executeUpdate(sqlString);
-                myStatement.close();
-                myconnection.close();
-            } catch (SQLException ex) {Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);}
-        } catch (SQLException ex) {Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);}  
-    }
-    
-    //----------------------------------//
-    
-    public static boolean LoginUser(String user,String pwd) 
-    {
-            boolean check =false;
-            try 
-            {      
-                DbConnection dbconn=new DbConnection();
-                Connection myconnection= dbconn.Connection();
-                
-                PreparedStatement ps1 =myconnection.prepareStatement("select * from usuarios where Nombre=? and Password=?");
-
-                ps1.setString(1, user);
-                ps1.setString(2, pwd);
-                ResultSet rs1 =ps1.executeQuery();
-                check = rs1.next();
-
-                myconnection.close();        
-            }catch(Exception e){e.printStackTrace();}
-            
-            return check;    
-    }
-    
-    //----------------------------------//
-    
-    public void GetUser()
-    {
-            try 
-            {      
-                DbConnection dbconn=new DbConnection();
-                Connection myconnection= dbconn.Connection();
-                
-                String sqlString = "SELECT * FROM usuarios WHERE Nombre = '"+Nombre+"'";
-                Statement myStatement = myconnection.createStatement();
-                ResultSet rs=myStatement.executeQuery(sqlString);
-
-                while(rs.next())
-                {
-                    Nombre= rs.getString("Nombre");
-                    Correo = rs.getString("Correo");
-                    Password= rs.getString("Password");
-                    Telefono = rs.getString("Telefono");
-                }
-                
-                myStatement.close();
-                myconnection.close();
-                
-            } catch (SQLException ex) {Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);} 
-            
-    }
-    
-    //----------------------------------//
-
 }
